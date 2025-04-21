@@ -2,7 +2,7 @@ public class ConcreteNotificacionFactory extends NotificacionFactory {
 
     @Override
     public Notificacion crearNotificacion(String tipo, String destinatario, String mensaje) {
-        switch (tipo.toUpperCase()) {
+        switch (tipo) {
             case "EMAIL":
                 return new EmailNotificacion(destinatario, mensaje);
             case "SMS":
