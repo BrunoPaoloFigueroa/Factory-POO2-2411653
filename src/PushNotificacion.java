@@ -9,6 +9,6 @@ public class PushNotificacion implements Notificacion {
 
     @Override
     public void enviar() {
-        System.out.println("Enviando push a " + dispositivoId + ": " + mensaje);
+        System.out.println("Enviando notificación push a " + dispositivoId + ": " + mensaje);
     }
 }

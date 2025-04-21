@@ -1,3 +1,3 @@
-public interface NotificacionFactory {
-    Notificacion crearNotificacion(String destinatario, String mensaje);
+public abstract class NotificacionFactory {
+    public abstract Notificacion crearNotificacion(String tipo, String destinatario, String mensaje);
 }

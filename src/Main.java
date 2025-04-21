@@ -1,15 +1,13 @@
 public class Main {
     public static void main(String[] args) {
-        Notificador notificador = new Notificador();
+        NotificacionFactory factory = new ConcreteNotificacionFactory();
 
-        notificador.registrarCanal("EMAIL", new EmailNotificacionFactory());
-        notificador.registrarCanal("SMS", new SMSNotificacionFactory());
-        notificador.registrarCanal("PUSH", new PushNotificacionFactory());
-        notificador.registrarCanal("VOZ", new VozNotificacionFactory());
+        Notificacion email = factory.crearNotificacion("EMAIL", "bruno.figueroa@usil.pe", "Hola xd");
+        Notificacion sms = factory.crearNotificacion("SMS", "322254548", "xdddddddddddddd");
+        Notificacion voz = factory.crearNotificacion("VOZ", "@edgfa@", "blablanbla");
 
-        notificador.enviarNotificacion("EMAIL", "bruno@xddddd.com", "Hola mundo");
-        notificador.enviarNotificacion("SMS", "4242442042", " SMS");
-        notificador.enviarNotificacion("PUSH", "device123", " un Push");
-        notificador.enviarNotificacion("VOZ", "32222222222", "zzzzzzzzzZZZZZZZZZZZZZZZZZZzzzzzzzzzzzzzzzzzzzz");
+        email.enviar();
+        sms.enviar();
+        voz.enviar();
     }
 }

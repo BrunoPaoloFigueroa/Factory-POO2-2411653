@@ -7,41 +7,34 @@ public class VozNotificacion implements Notificacion {
         this.mensaje = mensaje;
     }
 
+    private void convertirTextoAVoz() {
+        System.out.println("Convirtiendo mensaje a voz: " + mensaje);
+    }
+
+    private void registrarDuracion() {
+        System.out.println("Registrando duración de la llamada a " + telefono);
+    }
+
+    private void intentarLlamada() {
+        int intentos = 0;
+        boolean exito = false;
+
+        while (intentos < 3 && !exito) {
+            System.out.println("Intentando llamada #" + (intentos + 1) + " a " + telefono);
+            intentos++;
+            exito = true; // Simulamos éxito
+        }
+
+        if (!exito) {
+            System.out.println("No se pudo contactar a " + telefono);
+        }
+    }
+
     @Override
     public void enviar() {
-        String[] partes = dividirMensaje(mensaje, 500);
-        int intentos = 0;
-        boolean enviado = false;
-
-        while (intentos < 3 && !enviado) {
-            for (String parte : partes) {
-                convertirTextoAVoz(parte);
-                enviado = realizarLlamada(parte);
-                registrarDuracion(parte.length());
-            }
-            intentos++;
-        }
-
-        if (!enviado) {
-            System.out.println("No se pudo completar la llamada a " + telefono);
-        }
-    }
-
-    private String[] dividirMensaje(String texto, int max) {
-        return texto.split("(?<=\\G.{" + max + "})");
-    }
-
-    private void convertirTextoAVoz(String texto) {
-        System.out.println("Convirtiendo a voz: " + texto);
-    }
-
-    private boolean realizarLlamada(String parte) {
-        System.out.println("Realizando llamada con: " + parte);
-        return true;
-    }
-
-    private void registrarDuracion(int caracteres) {
-        int duracion = caracteres / 10;
-        System.out.println("Duración estimada: " + duracion + " segundos");
+        convertirTextoAVoz();
+        intentarLlamada();
+        registrarDuracion();
+        System.out.println("Llamada de voz enviada a " + telefono + ": " + mensaje);
     }
 }
