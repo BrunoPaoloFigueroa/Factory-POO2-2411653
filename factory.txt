@@ -1,0 +1,16 @@
+¿Cómo el patrón Factory facilita añadir el nuevo canal de voz?
+
+El metodo Factory permite mantener toda la lógica de creación de objetos en un único lugar, la clase (ConcreteNotificacionFactory). 
+Para añadir el canal de voz, basta con implementar (VozNotificacion).
+
+¿Qué cambios mínimos se necesitan para añadir WhatsApp?
+
+Para integrar WhatsApp apenas necesitas dos cambios,crear la clase (WhatsAppNotificacion) que 
+implemente (Notificacion) , y añadirlo al (ConcreteNotificacionFactory).
+
+¿Cómo manejaríamos notificaciones que combinan múltiples canales?
+
+Para enviar un mismo mensaje por varios canales a la vez, empleamos el patrón Composite con una clase NotificacionMultiple que
+implemente (Notificacion) y contenga una lista de instancias. Su método agregar(Notificacion n) añade canales a la lista, y
+su enviar() recorre la colección invocando enviar() en cada uno. Así, con una única llamada a combo.enviar(), disparas de forma
+ordenada todos los canales registrados.
